@@ -37,8 +37,7 @@ _combine_bytes(uint8_t msb, uint8_t lsb)
 	return ((uint16_t)msb << 8) | (uint16_t)lsb;
 }
 
-int 
-am2321(float *out_temperature, float *out_humidity, int bus) 
+int am2321(float *out_temperature, float *out_humidity, int bus) 
 {
 	int fd;
 	char i2c_bus[11];
@@ -131,7 +130,7 @@ int main(int argc, char *argv[]) {
 
 	int ret = am2321(&temp, &humi, bus);
 	if (ret) {
-		printf("Err=%d\n", ret);
+		printf("{\"error\": %d}", ret);
 		return ret;
 	}
 
